@@ -1,11 +1,7 @@
-o Status (e.g., researching, pending approval, approved, declined) o CompanyInfo
-o KeyContacts
-o financialPerformanceScore
-
 export const SEEDS = [
     {
         name: 'Joseph&co.',
-        status: 'pending',
+        status: 'Pending',
         keyContacts: [
             'Bart Starr',
             'Barry Lemeur',
@@ -18,7 +14,7 @@ export const SEEDS = [
 
     {
         name: 'Barclay',
-        status: 'researching',
+        status: 'Researching',
         keyContacts: [
             'Ken Starr',
             'Harry Burr',
@@ -31,7 +27,7 @@ export const SEEDS = [
 
     {
         name: 'Bracketology',
-        status: 'approved',
+        status: 'Approved',
         keyContacts: [
             'Sasha Bernard',
             'Perry Lamont'
@@ -41,7 +37,7 @@ export const SEEDS = [
     },
     {
         name: 'Bean Bag Co.',
-        status: 'declined',
+        status: 'Declined',
         keyContacts: [
             'Lindsey Sterling',
             'Skylar Swan',
@@ -54,7 +50,7 @@ export const SEEDS = [
 
     {
         name: 'The Kiwi Group',
-        status: 'approved',
+        status: 'Approved',
         keyContacts: [
             'Dez B. Ambi'
         ],
@@ -64,7 +60,7 @@ export const SEEDS = [
 
     {
         name: 'Starling Inc.',
-        status: 'researching',
+        status: 'Researching',
         keyContacts: [
             'Kelly Ortega',
             'Shaw Brown'
@@ -75,7 +71,7 @@ export const SEEDS = [
 
     {
         name: 'Barker Law Firm',
-        status: 'declined',
+        status: 'Declined',
         keyContacts: [
             'Mark Simpson',
             'Tim Tundra'
@@ -86,7 +82,7 @@ export const SEEDS = [
 
     {
         name: 'Sunshine and Rain',
-        status: 'researching',
+        status: 'Researching',
         keyContacts: [
             'Michael De Torres',
             'Sharon Camp',
@@ -98,7 +94,7 @@ export const SEEDS = [
 
     {
         name: 'Johnson & Jordan',
-        status: 'approved',
+        status: 'Approved',
         keyContacts: [
             'Alissa Martin',
             'Steve Macnamara'
@@ -109,7 +105,7 @@ export const SEEDS = [
 
     {
         name: 'Black Horse',
-        status: 'researching',
+        status: 'Researching',
         keyContacts: [
             'Jerome Jackson'
         ],
