@@ -3,7 +3,7 @@ import { Card, Button, Icon } from 'semantic-ui-react'
 
 
 const CompanyCard = (props) => {
-  const { company, handleEditClick } = props;
+  const { company, handleEditClick, handleDeleteClick } = props;
     return (
         <Card>
         <Card.Content>
@@ -17,7 +17,7 @@ const CompanyCard = (props) => {
             <strong>Company info:</strong> {company.companyInfo}
         </Card.Description>
         <Card.Description>
-          Financial Performance Score: {company.financialPerformanceScore}
+          <strong>Financial Performance Score:</strong> {company.financialPerformanceScore}
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
@@ -28,7 +28,10 @@ const CompanyCard = (props) => {
           >
             <Icon name="edit"/>
           </Button>
-          <Button basic color='red'>
+          <Button 
+            basic color='red'
+            onClick={ () => handleDeleteClick(company.id) }
+          >
             <Icon name='trash' />
           </Button>
         </div>

@@ -10,7 +10,7 @@ class CompanyList extends Component {
         return (
             <div className="ui container">
                 <Card.Group itemsPerRow={6}  >
-                    {this.props.curCompanies.map(company => <CompanyCard company={company} handleEditClick={this.props.handleEditClick} /> )}
+                    {this.props.curCompanies.map(company => <CompanyCard company={company} handleEditClick={this.props.handleEditClick} handleDeleteClick={this.props.handleDeleteClick} /> )}
                 </Card.Group>
             </div>
         )

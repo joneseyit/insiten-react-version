@@ -21,8 +21,15 @@ class CompanyContainer extends Component {
         this.setState({showEditForm: true})
     }
 
+    handleDeleteClick = (id) => {
+        let currentCompanies = this.state.companies.filter( c => {
+            return c.id !== id
+        })
+        this.setState({ companies: currentCompanies })
+
+    }
+
     handleEditSubmit = (company) => {
-        debugger
         this.setState({ showEditForm: false })
         const updatedCompanies = this.state.companies.map( c => {
             if(c.id === company.id){
@@ -39,7 +46,7 @@ class CompanyContainer extends Component {
         return (
             <div>
                 { this.state.showEditForm? <EditForm company={this.state.editableCompany} handleEditSubmit={this.handleEditSubmit} /> : null }
-                <CompanyList curCompanies={this.state.companies} handleEditClick={this.handleEditClick} />
+                <CompanyList curCompanies={this.state.companies} handleEditClick={this.handleEditClick} handleDeleteClick={this.handleDeleteClick} />
             </div>
         )
     }
