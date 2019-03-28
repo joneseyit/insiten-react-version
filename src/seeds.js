@@ -8,6 +8,7 @@ export const SEEDS = [
             'Sue Bird',
             'Brianna Johnson'
         ],
+        companyInfo: 'ipsum lorem...',
         financialPerformanceScore: 300,
         notes: 'Overrated.'
     },
@@ -21,6 +22,7 @@ export const SEEDS = [
             'Jerry Johnson',
             'Billy Bean'
         ],
+        companyInfo: 'ipsum lorem...',
         financialPerformanceScore: 50,
         notes: 'Diamond in the rough'
     },
@@ -32,6 +34,7 @@ export const SEEDS = [
             'Sasha Bernard',
             'Perry Lamont'
         ],
+        companyInfo: 'ipsum lorem...',
         financialPerformanceScore: 287,
         notes: 'Highly suspect'
     },
@@ -44,6 +47,7 @@ export const SEEDS = [
             'Pink Floyd',
             'Sofia Borsch'
         ],
+        companyInfo: 'ipsum lorem...',
         financialPerformanceScore: 96,
         notes: "Lots of talent"
     },
@@ -54,6 +58,7 @@ export const SEEDS = [
         keyContacts: [
             'Dez B. Ambi'
         ],
+        companyInfo: 'ipsum lorem...',
         financialPerformanceScore: 147,
         notes: 'One man band'
     },
@@ -65,6 +70,7 @@ export const SEEDS = [
             'Kelly Ortega',
             'Shaw Brown'
         ],
+        companyInfo: 'ipsum lorem...',
         financialPerformanceScore: 292,
         notes: 'Niche market'
     },
@@ -76,6 +82,7 @@ export const SEEDS = [
             'Mark Simpson',
             'Tim Tundra'
         ],
+        companyInfo: 'ipsum lorem...',
         financialPerformanceScore: 151,
         notes: 'Poorly managed.'
     },
@@ -88,6 +95,7 @@ export const SEEDS = [
             'Sharon Camp',
             'Sarai Blankenship'
         ],
+        companyInfo: 'ipsum lorem...',
         financialPerformanceScore: 399,
         notes: 'Looks good on the outside'
     },
@@ -99,6 +107,7 @@ export const SEEDS = [
             'Alissa Martin',
             'Steve Macnamara'
         ],
+        companyInfo: 'ipsum lorem...',
         financialPerformanceScore: 201,
         notes: 'A severe case of average'
     },
@@ -109,6 +118,7 @@ export const SEEDS = [
         keyContacts: [
             'Jerome Jackson'
         ],
+        companyInfo: 'ipsum lorem...',
         financialPerformanceScore: 333,
         notes: 'Intriguing market.'
     },

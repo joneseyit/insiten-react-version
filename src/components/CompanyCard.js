@@ -1,12 +1,12 @@
 import React from 'react'
-import { Card, Button } from 'semantic-ui-react'
+import { Card, Button, Icon } from 'semantic-ui-react'
 
 
 const CompanyCard = (props) => {
     return (
         <Card>
         <Card.Content>
-        <Card.Header>Name: {props.company.name}</Card.Header>
+        <Card.Header>Company Name: {props.company.name}</Card.Header>
         <Card.Meta>Status: {props.company.status}</Card.Meta>
         <Card.Description>
             <strong>Key Contacts:</strong> {
@@ -14,16 +14,19 @@ const CompanyCard = (props) => {
             }
         </Card.Description>
         <Card.Description>
-            
+            <strong>Company info:</strong> {props.company.companyInfo}
+        </Card.Description>
+        <Card.Description>
+          Financial Performance Score: {props.company.financialPerformanceScore}
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
         <div className='ui two buttons'>
           <Button basic color='green'>
-            Approve
+            <Icon name="edit"/>
           </Button>
           <Button basic color='red'>
-            Decline
+            <Icon name='trash' />
           </Button>
         </div>
       </Card.Content>
