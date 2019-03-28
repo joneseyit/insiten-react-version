@@ -8,7 +8,7 @@ import { Container } from 'semantic-ui-react'
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="App" style={{ fontFamily: 'PT Serif, serif' }}>
         <Container>
           <h1>inOrganic Growth Through Acquisitions</h1>
           <NavBar />
