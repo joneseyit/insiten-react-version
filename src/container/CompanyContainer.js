@@ -15,17 +15,31 @@ class CompanyContainer extends Component {
         this.setState({ companies: SEEDS})
     }
 
-    handleEdit = (id) => {
+    handleEditClick = (id) => {
         let editableCompany = this.state.companies.find(company => company.id === id)
         this.setState({ editableCompany })
         this.setState({showEditForm: true})
     }
 
+    handleEditSubmit = (company) => {
+        debugger
+        this.setState({ showEditForm: false })
+        const updatedCompanies = this.state.companies.map( c => {
+            if(c.id === company.id){
+                return Object.assign( {}, company)
+            } else {
+                return c
+            }
+        })
+        this.setState({ companies: updatedCompanies })
+        
+    }
+
     render(){
         return (
             <div>
-                { this.state.showEditForm? <EditForm company={this.state.editableCompany} /> : null }
-                <CompanyList curCompanies={this.state.companies} handleEdit={this.handleEdit} />
+                { this.state.showEditForm? <EditForm company={this.state.editableCompany} handleEditSubmit={this.handleEditSubmit} /> : null }
+                <CompanyList curCompanies={this.state.companies} handleEditClick={this.handleEditClick} />
             </div>
         )
     }

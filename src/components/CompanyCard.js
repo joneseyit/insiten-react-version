@@ -3,7 +3,7 @@ import { Card, Button, Icon } from 'semantic-ui-react'
 
 
 const CompanyCard = (props) => {
-  const { company, handleEdit } = props;
+  const { company, handleEditClick } = props;
     return (
         <Card>
         <Card.Content>
@@ -24,7 +24,7 @@ const CompanyCard = (props) => {
         <div className='ui two buttons'>
           <Button 
             basic color='green' 
-            onClick={ () => handleEdit(company.id)} 
+            onClick={ () => handleEditClick(company.id)} 
           >
             <Icon name="edit"/>
           </Button>
