@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
 import CompanyContainer from './container/CompanyContainer';
+import NavBar from './components/NavBar'
+import { Container } from 'semantic-ui-react'
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Welcome to (i)OG</h1>
-        <CompanyContainer />
+        <Container>
+          <h1>inOrganic Growth Through Acquisitions</h1>
+          <NavBar />
+          <CompanyContainer />
+        </Container>
+        
       </div>
     );
   }
