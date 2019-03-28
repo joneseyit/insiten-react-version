@@ -42,9 +42,14 @@ class CompanyContainer extends Component {
     this.setState({ companies: updatedCompanies });
   };
 
+  handleSearchChange = term => {
+      console.log(term)
+  }
+
   render() {
     return (
       <div>
+          <Search handleSearchChange={this.handleSearchChange} />
         {this.state.showEditForm ? (
           <EditForm
             company={this.state.editableCompany}
