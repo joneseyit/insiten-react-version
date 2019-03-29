@@ -53,12 +53,11 @@ class CompanyContainer extends Component {
   render() {
     return (
       <div>
-        {this.state.showCreateForm ? 
-        (<CreateCompany 
+        
+        <CreateCompany 
           handleCreateSubmit={this.handleCreateSubmit}
-        />) : 
-        null}
-
+        />
+        <br/>
         {this.state.showEditForm ? (
           <EditForm
             company={this.state.editableCompany}
