@@ -4,13 +4,17 @@ import { SEEDS } from "../seeds";
 import EditForm from "../components/EditForm";
 import CreateCompany from "../components/CreateCompany";
 import Search from "../components/Search";
+import SortedCompanies from "../components/SortedCompanies";
 
 class CompanyContainer extends Component {
   state = {
     companies: [],
     showEditForm: false,
     editableCompany: null,
-    searchResults: []
+    searchTerm: '',
+    searchResults: [],
+    sortedCompanies: [],
+    showSortedCo: false
   };
 
   componentDidMount() {
@@ -45,9 +49,10 @@ class CompanyContainer extends Component {
   };
 
   handleSearchChange = (e) => {
-    let search = e.target.value.toLowerCase()
+    let searchTerm = e.target.value.toLowerCase()
+    this.setState({ searchTerm: searchTerm })
     let searchResults = this.state.companies.filter( 
-      company => company.name.toLowerCase().includes(search)
+      company => company.name.toLowerCase().includes(searchTerm)
       )
     this.setState({searchResults: searchResults})
   };
@@ -59,11 +64,29 @@ class CompanyContainer extends Component {
     this.setState({ companies: updatedCompanyList });
   };
 
+  sortCompanies = () => {
+    this.setState({ showSortedCo: !this.state.showSortedCo })
+    let companies = this.state.companies
+    let sortedCompanies = companies.slice().sort( 
+      (a, b) => b.financialPerformanceScore - a.financialPerformanceScore   
+      )
+    this.setState({ sortedCompanies: sortedCompanies })
+  }
+
+
   render() {
+    let allCompanies = this.state.showSortedCo ? this.state.sortedCompanies : this.state.companies
+    let renderedCompanies = this.state.searchTerm.length ? 
+      this.state.searchResults : 
+      allCompanies;
+    
     return (
       <div>
-        <Search handleSearchChange={this.handleSearchChange} />
         
+        <Search handleSearchChange={this.handleSearchChange} />
+        <SortedCompanies sortCompanies={this.sortCompanies} />
+       
+
         <CreateCompany handleCreateSubmit={this.handleCreateSubmit} />
         <br />
         {this.state.showEditForm ? (
@@ -74,7 +97,7 @@ class CompanyContainer extends Component {
         ) : null}
 
         <CompanyList
-          curCompanies={this.state.searchResults.length ? this.state.searchResults : this.state.companies}
+          curCompanies={renderedCompanies}
           handleEditClick={this.handleEditClick}
           handleDeleteClick={this.handleDeleteClick}
         />

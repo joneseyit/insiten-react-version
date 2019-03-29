@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Form } from "semantic-ui-react";
+import { Form } from "semantic-ui-react";
 
 class CreateCompany extends Component {
   state = {
@@ -20,7 +20,7 @@ class CreateCompany extends Component {
   render() {
     return (
       <div>
-        <h3>Add a Company</h3>
+        <h3>Add a New Company Below</h3>
         <Form onSubmit={() => this.props.handleCreateSubmit(this.state)}>
           <Form.Group widths="equal">
             <Form.Input
