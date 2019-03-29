@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import CompanyList from "../components/CompanyList";
 import { SEEDS } from "../seeds";
 import EditForm from "../components/EditForm";
-
+import CreateCompany from '../components/CreateCompany'
 class CompanyContainer extends Component {
   state = {
     companies: [],
@@ -42,15 +42,31 @@ class CompanyContainer extends Component {
     this.setState({ companies: updatedCompanies });
   };
 
+  handleCreateSubmit = (company) => {
+    this.setState({ showCreateForm: false })
+    //just a hack to create an id without a database
+    company.id = this.state.companies.length + 1
+    const updatedCompanyList = this.state.companies.concat(company)
+    this.setState({ companies: updatedCompanyList })
+  }
+
   render() {
     return (
       <div>
+        {this.state.showCreateForm ? 
+        (<CreateCompany 
+          handleCreateSubmit={this.handleCreateSubmit}
+        />) : 
+        null}
+
         {this.state.showEditForm ? (
           <EditForm
             company={this.state.editableCompany}
             handleEditSubmit={this.handleEditSubmit}
           />
-        ) : null}
+        ) : 
+        null}
+
         <CompanyList
           curCompanies={this.state.companies}
           handleEditClick={this.handleEditClick}
