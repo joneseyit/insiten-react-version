@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <div className="App" style={{ fontFamily: 'PT Serif, serif' }}>
         <Container>
-          <h1>inOrganic Growth Through Acquisitions</h1>
+          <h1>Achieve (in)Organic Growth Through Acquisitions</h1>
           <NavBar />
           <CompanyContainer />
         </Container>
