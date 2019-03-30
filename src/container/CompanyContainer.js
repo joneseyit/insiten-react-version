@@ -5,12 +5,12 @@ import EditForm from "../components/EditForm";
 import CreateCompany from "../components/CreateCompany";
 import Search from "../components/Search";
 import SortedCompanies from "../components/SortedCompanies";
+import { connect } from 'react-redux'
+import { addCompanies } from '../redux/actions'
+
 
 class CompanyContainer extends Component {
   state = {
-    companies: [],
-    showEditForm: false,
-    editableCompany: null,
     searchTerm: '',
     searchResults: [],
     sortedCompanies: [],
@@ -18,14 +18,14 @@ class CompanyContainer extends Component {
   };
 
   componentDidMount() {
-    this.setState({ companies: SEEDS });
+    this.props.dispatch(addCompanies(SEEDS))
   }
 
   handleEditClick = id => {
-    let editableCompany = this.state.companies.find(
+    let editCompany = this.state.companies.find(
       company => company.id === id
     );
-    this.setState({ editableCompany });
+    this.setState({ editCompany });
     this.setState({ showEditForm: !this.state.showEditForm });
   };
 
@@ -34,18 +34,6 @@ class CompanyContainer extends Component {
       return c.id !== id;
     });
     this.setState({ companies: currentCompanies });
-  };
-
-  handleEditSubmit = company => {
-    this.setState({ showEditForm: false });
-    const updatedCompanies = this.state.companies.map(c => {
-      if (c.id === company.id) {
-        return Object.assign({}, company);
-      } else {
-        return c;
-      }
-    });
-    this.setState({ companies: updatedCompanies });
   };
 
   handleSearchChange = (e) => {
@@ -89,15 +77,9 @@ class CompanyContainer extends Component {
 
         <CreateCompany handleCreateSubmit={this.handleCreateSubmit} />
         <br />
-        {this.state.showEditForm ? (
-          <EditForm
-            company={this.state.editableCompany}
-            handleEditSubmit={this.handleEditSubmit}
-          />
-        ) : null}
+        {this.props.editCompany ? (<EditForm/>) : null}
 
         <CompanyList
-          curCompanies={renderedCompanies}
           handleEditClick={this.handleEditClick}
           handleDeleteClick={this.handleDeleteClick}
         />
@@ -106,4 +88,8 @@ class CompanyContainer extends Component {
   }
 }
 
-export default CompanyContainer;
+const mapStateToProps = (state) => {
+  return { editCompany: state.editCompany }
+}
+
+export default connect(mapStateToProps)(CompanyContainer);

@@ -1,23 +1,31 @@
 import React, { Component } from "react";
 import { Card } from "semantic-ui-react";
 import CompanyCard from "./CompanyCard";
+import CompanyListItem from './CompanyListItem'
+import { connect } from 'react-redux'
 
 class CompanyList extends Component {
+
+
   render() {
     return (
-      <div className="ui container">
-        <Card.Group itemsPerRow={6}>
-          {this.props.curCompanies.map(company => (
+      <div className='six wide column'>
+        <Card.Group>          
+          {this.props.companies.map(company => (
             <CompanyCard
               company={company}
               handleEditClick={this.props.handleEditClick}
               handleDeleteClick={this.props.handleDeleteClick}
             />
           ))}
-        </Card.Group>
+        </Card.Group>  
       </div>
     );
   }
 }
 
-export default CompanyList;
+const mapStateToProps = ({companies}) => {
+  return { companies: companies}
+}
+
+export default connect(mapStateToProps)(CompanyList);

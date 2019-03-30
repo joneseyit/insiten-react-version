@@ -24,14 +24,12 @@ class CreateCompany extends Component {
         <Form onSubmit={() => this.props.handleCreateSubmit(this.state)}>
           <Form.Group widths="equal">
             <Form.Input
-              fluid
               label="Company Name"
               name="name"
               onChange={this.handleOnChange}
               placeholder="Name"
             />
             <Form.Input
-              fluid
               label="Status"
               name="status"
               onChange={this.handleOnChange}
@@ -39,14 +37,12 @@ class CreateCompany extends Component {
             />
 
             <Form.Input
-              fluid
               label="Financial Performance Score"
               name="financialPerformanceScore"
               onChange={this.handleOnChange}
               placeholder="Financial Performance Score"
             />
             <Form.TextArea
-              fluid
               label="Key Contacts"
               name="keyContacts"
               onChange={this.handleOnChange}

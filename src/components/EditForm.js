@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import { Card, Form } from "semantic-ui-react";
+import { connect } from 'react-redux'
+import { clearEditForm, addCompanies } from '../redux/actions'
+
 
 class EditForm extends Component {
   state = {
-    id: this.props.company.id,
-    name: this.props.company.name,
-    status: this.props.company.status,
-    companyInfo: this.props.company.companyInfo,
-    financialPerformanceScore: this.props.company.financialPerformanceScore,
-    keyContacts: this.props.company.keyContacts
+    id: this.props.editCompany.id,
+    name: this.props.editCompany.name,
+    status: this.props.editCompany.status,
+    companyInfo: this.props.editCompany.companyInfo,
+    financialPerformanceScore: this.props.editCompany.financialPerformanceScore,
+    keyContacts: this.props.editCompany.keyContacts
   };
 
   handleOnChange = e => {
@@ -17,6 +20,20 @@ class EditForm extends Component {
     this.setState({ [name]: value });
   };
 
+
+  handleEditSubmit = company => {
+    const updatedCompanies = this.props.companies.map(c => {
+      if (c.id === company.id) {
+        return Object.assign({}, company);
+      } else {
+        return c;
+      }
+    });
+    this.props.dispatch(addCompanies(updatedCompanies))
+    this.props.dispatch(clearEditForm())
+  };
+  
+
   render() {
     const {
       name,
@@ -24,11 +41,11 @@ class EditForm extends Component {
       companyInfo,
       financialPerformanceScore,
       keyContacts
-    } = this.state;
+    } = this.props.editCompany;
 
     return (
       <Card>
-        <Form onSubmit={() => this.props.handleEditSubmit(this.state)}>
+        <Form onSubmit={() => this.handleEditSubmit(this.state)}>
           <Form.Group widths="equal">
             <Form.Input
               fluid
@@ -77,4 +94,13 @@ class EditForm extends Component {
   }
 }
 
-export default EditForm;
+const mapStateToProps = ({editCompany, companies}) => {
+  return { 
+    editCompany: editCompany, 
+    companies: companies
+  }
+}
+
+// const mapDispatchToProps
+
+export default connect(mapStateToProps)(EditForm);
