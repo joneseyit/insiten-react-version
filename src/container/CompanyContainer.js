@@ -11,6 +11,8 @@ import { addCompanies } from '../redux/actions'
 
 class CompanyContainer extends Component {
   state = {
+    showEditForm: false,
+    editCompany: null,
     searchTerm: '',
     searchResults: [],
     sortedCompanies: [],
@@ -22,12 +24,27 @@ class CompanyContainer extends Component {
   }
 
   handleEditClick = id => {
-    let editCompany = this.state.companies.find(
+    let editCompany = this.props.companies.find(
       company => company.id === id
     );
-    this.setState({ editCompany });
+    this.setState({ editCompany: editCompany });
     this.setState({ showEditForm: !this.state.showEditForm });
+    
   };
+
+  handleEditSubmit = (company) => {
+    debugger
+    this.setState({ showEditForm: false })
+    const updatedCompanies = this.props.companies.map( c => {
+        if(c.id === company.id){
+            return Object.assign( {}, company)
+        } else {
+            return c
+        }
+    })
+    this.props.dispatch(addCompanies(updatedCompanies))
+  }
+
 
   handleDeleteClick = id => {
     let currentCompanies = this.state.companies.filter(c => {
@@ -35,6 +52,7 @@ class CompanyContainer extends Component {
     });
     this.setState({ companies: currentCompanies });
   };
+
 
   handleSearchChange = (e) => {
     let searchTerm = e.target.value.toLowerCase()
@@ -76,8 +94,13 @@ class CompanyContainer extends Component {
        
 
         <CreateCompany handleCreateSubmit={this.handleCreateSubmit} />
-        
-        {this.props.editCompany ? (<EditForm/>) : null}
+        <br />
+        {this.state.showEditForm ? (
+          <EditForm
+            company={this.state.editCompany}
+            handleEditSubmit={this.handleEditSubmit}
+          />
+        ) : null}
 
         <CompanyList
           handleEditClick={this.handleEditClick}
@@ -88,8 +111,8 @@ class CompanyContainer extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return { editCompany: state.editCompany }
+const mapStateToProps = ({companies}) => {
+  return { companies: companies}
 }
 
 export default connect(mapStateToProps)(CompanyContainer);

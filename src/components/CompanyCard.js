@@ -1,8 +1,9 @@
 import React from "react";
 import { Card, Button, Icon } from "semantic-ui-react";
 import { connect } from 'react-redux'
-import { addEditCompany } from '../redux/actions'
+import { addEditCompany,toggleEdit } from '../redux/actions'
 
+//component called from CompanyList
 class CompanyCard extends React.Component {
   render(){
   const { company, handleEditClick, handleDeleteClick } = this.props
@@ -28,7 +29,7 @@ class CompanyCard extends React.Component {
             <Button
               basic
               color="green"
-              onClick={() => this.props.editCompany(company)}
+              onClick={() => handleEditClick(company.id)}
             >
               <Icon name="edit" />
             </Button>
@@ -46,10 +47,5 @@ class CompanyCard extends React.Component {
   };
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return { 
-    editCompany: (company) => dispatch(addEditCompany(company))
-  }
-}
 
-export default connect(null, mapDispatchToProps)(CompanyCard);
+export default connect()(CompanyCard);

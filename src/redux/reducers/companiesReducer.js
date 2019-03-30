@@ -5,5 +5,4 @@ export function companiesReducer(state = [], action){
         default: 
             return state
     }
-    
 } 

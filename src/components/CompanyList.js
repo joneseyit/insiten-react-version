@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Card } from "semantic-ui-react";
 import CompanyCard from "./CompanyCard";
-import CompanyListItem from './CompanyListItem'
 import { connect } from 'react-redux'
 
 class CompanyList extends Component {
@@ -13,9 +12,10 @@ class CompanyList extends Component {
         <Card.Group>          
           {this.props.companies.map(company => (
             <CompanyCard
+              key = {company.id}
               company={company}
-              handleEditClick={this.props.handleEditClick}
               handleDeleteClick={this.props.handleDeleteClick}
+              handleEditClick={this.props.handleEditClick}
             />
           ))}
         </Card.Group>  
