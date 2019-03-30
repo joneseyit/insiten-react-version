@@ -23,13 +23,14 @@ class CreateCompany extends Component {
     company.id = this.props.companies.length + 1;
     const updatedCompanyList = this.props.companies.concat(company);
     this.props.dispatch(addCompany(company))
+    document.querySelector(".create-form").reset()
   };
 
   render() {
     return (
       <div>
         <h3>Add a New Company Below</h3>
-        <Form onSubmit={() => this.handleCreateSubmit(this.state)}>
+        <Form onSubmit={() => this.handleCreateSubmit(this.state)} className="create-form">
           <Form.Group widths="equal">
             <Form.Input
               label="Company Name"

@@ -88,7 +88,7 @@ class CompanyContainer extends Component {
         <SortedCompanies sortCompanies={this.sortCompanies} />
        
 
-        <CreateCompany handleCreateSubmit={this.handleCreateSubmit} />
+        <CreateCompany />
   
         {this.state.showEditForm ? (
           <EditForm
@@ -107,7 +107,9 @@ class CompanyContainer extends Component {
 }
 
 const mapStateToProps = ({companies}) => {
-  return { companies: companies}
+  return { 
+    companies: companies
+  }
 }
 
 export default connect(mapStateToProps)(CompanyContainer);
