@@ -48,7 +48,6 @@ class CompanyCard extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  debugger
   return {
     deleteCompany: (company) => dispatch(deleteCompany(company))
   }

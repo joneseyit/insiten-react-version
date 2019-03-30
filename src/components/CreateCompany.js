@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Form } from "semantic-ui-react";
+import { connect } from 'react-redux'
+import { addCompany } from '../redux/actions'
 
 class CreateCompany extends Component {
   state = {
@@ -17,11 +19,17 @@ class CreateCompany extends Component {
     this.setState({ [name]: value });
   };
 
+  handleCreateSubmit = company => {
+    company.id = this.props.companies.length + 1;
+    const updatedCompanyList = this.props.companies.concat(company);
+    this.props.dispatch(addCompany(company))
+  };
+
   render() {
     return (
       <div>
         <h3>Add a New Company Below</h3>
-        <Form onSubmit={() => this.props.handleCreateSubmit(this.state)}>
+        <Form onSubmit={() => this.handleCreateSubmit(this.state)}>
           <Form.Group widths="equal">
             <Form.Input
               label="Company Name"
@@ -64,4 +72,8 @@ class CreateCompany extends Component {
   }
 }
 
-export default CreateCompany;
+const mapStateToProps = ({ companies }) => {
+  return { companies: companies }
+}
+
+export default connect(mapStateToProps)(CreateCompany);

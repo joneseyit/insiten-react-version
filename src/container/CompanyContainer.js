@@ -63,12 +63,7 @@ class CompanyContainer extends Component {
     this.setState({searchResults: searchResults})
   };
 
-  handleCreateSubmit = company => {
-    this.setState({ showCreateForm: false });
-    company.id = this.state.companies.length + 1;
-    const updatedCompanyList = this.state.companies.concat(company);
-    this.setState({ companies: updatedCompanyList });
-  };
+
 
   sortCompanies = () => {
     this.setState({ showSortedCo: !this.state.showSortedCo })
@@ -94,7 +89,7 @@ class CompanyContainer extends Component {
        
 
         <CreateCompany handleCreateSubmit={this.handleCreateSubmit} />
-        <br />
+  
         {this.state.showEditForm ? (
           <EditForm
             company={this.state.editCompany}
