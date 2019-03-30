@@ -76,7 +76,7 @@ class CompanyContainer extends Component {
        
 
         <CreateCompany handleCreateSubmit={this.handleCreateSubmit} />
-        <br />
+        
         {this.props.editCompany ? (<EditForm/>) : null}
 
         <CompanyList
