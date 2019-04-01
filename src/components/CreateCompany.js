@@ -66,7 +66,7 @@ class CreateCompany extends Component {
             />
           </Form.Group>
 
-          <Form.Button type="submit">Submit</Form.Button>
+          <Form.Button type="submit">Add Company</Form.Button>
         </Form>
       </div>
     );

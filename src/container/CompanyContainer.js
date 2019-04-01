@@ -45,29 +45,18 @@ class CompanyContainer extends Component {
     this.props.dispatch(addCompanies(updatedCompanies))
   }
 
-
-  handleDeleteClick = id => {
-    let currentCompanies = this.state.companies.filter(c => {
-      return c.id !== id;
-    });
-    this.setState({ companies: currentCompanies });
-  };
-
-
   handleSearchChange = (e) => {
     let searchTerm = e.target.value.toLowerCase()
     this.setState({ searchTerm: searchTerm })
-    let searchResults = this.state.companies.filter( 
+    let searchResults = this.props.companies.filter( 
       company => company.name.toLowerCase().includes(searchTerm)
       )
     this.setState({searchResults: searchResults})
   };
 
-
-
   sortCompanies = () => {
     this.setState({ showSortedCo: !this.state.showSortedCo })
-    let companies = this.state.companies
+    let companies = this.props.companies
     let sortedCompanies = companies.slice().sort( 
       (a, b) => b.financialPerformanceScore - a.financialPerformanceScore   
       )
@@ -99,7 +88,6 @@ class CompanyContainer extends Component {
 
         <CompanyList
           handleEditClick={this.handleEditClick}
-          handleDeleteClick={this.handleDeleteClick}
         />
       </div>
     );
