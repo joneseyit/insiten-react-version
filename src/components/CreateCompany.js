@@ -21,7 +21,7 @@ class CreateCompany extends Component {
     return (
       <div>
         <h3>Add a New Company Below</h3>
-        <Form onSubmit={() => this.props.handleCreateSubmit(this.state)}>
+        <Form onSubmit={() => this.props.handleCreateSubmit(this.state)} className="create-form">
           <Form.Group widths="equal">
             <Form.Input
               fluid
@@ -61,7 +61,7 @@ class CreateCompany extends Component {
             />
           </Form.Group>
 
-          <Form.Button type="submit">Submit</Form.Button>
+          <Form.Button type="submit">Add Company</Form.Button>
         </Form>
       </div>
     );

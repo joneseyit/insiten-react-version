@@ -5,6 +5,7 @@ import EditForm from "../components/EditForm";
 import CreateCompany from "../components/CreateCompany";
 import Search from "../components/Search";
 import SortedCompanies from "../components/SortedCompanies";
+import { Segment } from 'semantic-ui-react'
 
 class CompanyContainer extends Component {
   state = {
@@ -51,7 +52,7 @@ class CompanyContainer extends Component {
   handleSearchChange = (e) => {
     let searchTerm = e.target.value.toLowerCase()
     this.setState({ searchTerm: searchTerm })
-    let searchResults = this.state.companies.filter( 
+    let searchResults = this.state.companies.filter(
       company => company.name.toLowerCase().includes(searchTerm)
       )
     this.setState({searchResults: searchResults})
@@ -62,30 +63,35 @@ class CompanyContainer extends Component {
     company.id = this.state.companies.length + 1;
     const updatedCompanyList = this.state.companies.concat(company);
     this.setState({ companies: updatedCompanyList });
+    document.querySelector(".create-form").reset()
   };
 
   sortCompanies = () => {
     this.setState({ showSortedCo: !this.state.showSortedCo })
     let companies = this.state.companies
-    let sortedCompanies = companies.slice().sort( 
-      (a, b) => b.financialPerformanceScore - a.financialPerformanceScore   
+    let sortedCompanies = companies.slice().sort(
+      (a, b) => b.financialPerformanceScore - a.financialPerformanceScore
       )
     this.setState({ sortedCompanies: sortedCompanies })
   }
 
 
   render() {
+
     let allCompanies = this.state.showSortedCo ? this.state.sortedCompanies : this.state.companies
-    let renderedCompanies = this.state.searchTerm.length ? 
-      this.state.searchResults : 
+    let renderedCompanies = this.state.searchTerm.length ?
+      this.state.searchResults :
       allCompanies;
-    
+
     return (
       <div>
-        
-        <Search handleSearchChange={this.handleSearchChange} />
-        <SortedCompanies sortCompanies={this.sortCompanies} />
-       
+        <Segment>
+          <Segment.Inline>
+            <Search handleSearchChange={this.handleSearchChange} />
+            <SortedCompanies sortCompanies={this.sortCompanies} />
+          </Segment.Inline>
+        </Segment>
+
 
         <CreateCompany handleCreateSubmit={this.handleCreateSubmit} />
         <br />

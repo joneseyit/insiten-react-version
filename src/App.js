@@ -3,18 +3,19 @@ import './App.css';
 import CompanyContainer from './container/CompanyContainer';
 import NavBar from './components/NavBar'
 import { Container } from 'semantic-ui-react'
-
-
+import Home from './components/LandingPage'
+import { Switch, Route } from 'react-router-dom'
 class App extends Component {
   render() {
     return (
       <div className="App" style={{ fontFamily: 'PT Serif, serif' }}>
-        <Container>
-          <h1>Achieve (in)Organic Growth Through Acquisitions</h1>
+
+          {/*<h1>Achieve (in)Organic Growth Through Acquisitions</h1>*/}
           <NavBar />
-          <CompanyContainer />
-        </Container>
-        
+          <Switch>
+            <Route exact path='/' component={ Home } />
+            <Route path='/dashboard' component={ CompanyContainer } />
+          </Switch>
       </div>
     );
   }
