@@ -86,6 +86,4 @@ const mapStateToProps = ({editCompany, companies}) => {
   }
 }
 
-// const mapDispatchToProps
-
 export default connect(mapStateToProps)(EditForm);

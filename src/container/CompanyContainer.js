@@ -45,15 +45,6 @@ class CompanyContainer extends Component {
     this.props.dispatch(addCompanies(updatedCompanies))
   }
 
-  handleSearchChange = (e) => {
-    let searchTerm = e.target.value.toLowerCase()
-    this.setState({ searchTerm: searchTerm })
-    let searchResults = this.props.companies.filter( 
-      company => company.name.toLowerCase().includes(searchTerm)
-      )
-    this.setState({searchResults: searchResults})
-  };
-
   sortCompanies = () => {
     this.setState({ showSortedCo: !this.state.showSortedCo })
     let companies = this.props.companies

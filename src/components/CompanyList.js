@@ -4,10 +4,11 @@ import CompanyCard from "./CompanyCard";
 import { connect } from 'react-redux'
 
 const CompanyList = (props) => {
+  const showCompanies = props.searchResults || props.companies
   return (
     <div className='six wide column'>
       <Card.Group>          
-        {props.companies.map(company => (
+        {showCompanies.map(company => (
           <CompanyCard
             key = {company.id}
             company={company}
@@ -19,8 +20,11 @@ const CompanyList = (props) => {
   );
 }
 
-const mapStateToProps = ({companies}) => {
-  return { companies: companies}
+const mapStateToProps = ({ companies, searchResults }) => {
+  return { 
+    companies: companies,
+    searchResults: searchResults 
+  }
 }
 
 export default connect(mapStateToProps)(CompanyList);
