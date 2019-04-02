@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import CompanyContainer from './container/CompanyContainer';
 import NavBar from './components/NavBar'
-import { Container } from 'semantic-ui-react'
 import Home from './components/LandingPage'
 import { Switch, Route } from 'react-router-dom'
 class App extends Component {

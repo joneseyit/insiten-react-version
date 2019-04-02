@@ -5,7 +5,7 @@ import EditForm from "../components/EditForm";
 import CreateCompany from "../components/CreateCompany";
 import Search from "../components/Search";
 import SortedCompanies from "../components/SortedCompanies";
-import { Segment } from 'semantic-ui-react'
+import { Segment, Container } from 'semantic-ui-react'
 
 class CompanyContainer extends Component {
   state = {
@@ -61,8 +61,9 @@ class CompanyContainer extends Component {
   handleCreateSubmit = company => {
     this.setState({ showCreateForm: false });
     company.id = this.state.companies.length + 1;
-    const updatedCompanyList = this.state.companies.concat(company);
+    const updatedCompanyList = [company, ...this.state.companies];
     this.setState({ companies: updatedCompanyList });
+    this.setState({ showSortedCo: false })
     document.querySelector(".create-form").reset()
   };
 
@@ -86,20 +87,25 @@ class CompanyContainer extends Component {
     return (
       <div>
         <Segment>
-          <Segment.Inline>
+
+
             <Search handleSearchChange={this.handleSearchChange} />
+            <div> || </div>
             <SortedCompanies sortCompanies={this.sortCompanies} />
-          </Segment.Inline>
+
         </Segment>
 
 
         <CreateCompany handleCreateSubmit={this.handleCreateSubmit} />
         <br />
         {this.state.showEditForm ? (
+          <Container className='ui centered' >
           <EditForm
             company={this.state.editableCompany}
             handleEditSubmit={this.handleEditSubmit}
+
           />
+          </Container>
         ) : null}
 
         <CompanyList
