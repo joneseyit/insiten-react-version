@@ -86,33 +86,32 @@ class CompanyContainer extends Component {
 
     return (
       <div>
-        <Segment>
+        <Container>
+          <Segment>
+              <Search handleSearchChange={this.handleSearchChange} />
+              <div> || </div>
+              <SortedCompanies sortCompanies={this.sortCompanies} />
+          </Segment>
 
 
-            <Search handleSearchChange={this.handleSearchChange} />
-            <div> || </div>
-            <SortedCompanies sortCompanies={this.sortCompanies} />
+          <CreateCompany handleCreateSubmit={this.handleCreateSubmit} />
+          <br />
+          {this.state.showEditForm ? (
+            <Container className='ui centered' >
+            <EditForm
+              company={this.state.editableCompany}
+              handleEditSubmit={this.handleEditSubmit}
 
-        </Segment>
+            />
+            </Container>
+          ) : null}
 
-
-        <CreateCompany handleCreateSubmit={this.handleCreateSubmit} />
-        <br />
-        {this.state.showEditForm ? (
-          <Container className='ui centered' >
-          <EditForm
-            company={this.state.editableCompany}
-            handleEditSubmit={this.handleEditSubmit}
-
+          <CompanyList
+            curCompanies={renderedCompanies}
+            handleEditClick={this.handleEditClick}
+            handleDeleteClick={this.handleDeleteClick}
           />
-          </Container>
-        ) : null}
-
-        <CompanyList
-          curCompanies={renderedCompanies}
-          handleEditClick={this.handleEditClick}
-          handleDeleteClick={this.handleDeleteClick}
-        />
+        </Container>
       </div>
     );
   }
