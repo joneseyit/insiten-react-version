@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import CompanyContainer from './container/CompanyContainer';
 import NavBar from './components/NavBar'
-import Home from './components/LandingPage'
+import Home from './components/Home'
 import { Switch, Route } from 'react-router-dom'
 class App extends Component {
   render() {

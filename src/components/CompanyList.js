@@ -9,6 +9,7 @@ class CompanyList extends Component {
         <Card.Group itemsPerRow={6}>
           {this.props.curCompanies.map(company => (
             <CompanyCard
+              key={company.id}
               company={company}
               handleEditClick={this.props.handleEditClick}
               handleDeleteClick={this.props.handleDeleteClick}
